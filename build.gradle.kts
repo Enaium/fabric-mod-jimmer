@@ -1,15 +1,30 @@
 plugins {
     alias(libs.plugins.loom)
     alias(libs.plugins.publish)
+    alias(libs.plugins.maven)
 }
 
 group = "cn.enaium"
-version = "1.0.0+jimmer.${libs.versions.jimmer.get()}"
-
-val lib: Configuration by configurations.creating
+version = "1.0.1+jimmer.${libs.versions.jimmer.get()}"
 
 repositories {
     mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+val includeAndExpose: Configuration by configurations.creating
+
+configurations {
+    include {
+        extendsFrom(includeAndExpose)
+    }
+    modApi {
+        extendsFrom(includeAndExpose)
+    }
 }
 
 dependencies {
@@ -20,14 +35,14 @@ dependencies {
         }
     }
     modImplementation(libs.fabric.loader)
-    lib(libs.jimmer) {
+    includeAndExpose(libs.jimmer) {
         exclude(module = "kotlin-stdlib")
         exclude(module = "kotlin-reflect")
     }
 }
 
 tasks.processIncludeJars {
-    from(lib)
+    from(includeAndExpose)
 }
 
 tasks.processResources {
@@ -36,8 +51,6 @@ tasks.processResources {
         expand("version" to version)
     }
 }
-
-
 
 publishMods {
     file = tasks.remapJar.get().archiveFile.get()
@@ -70,5 +83,41 @@ publishMods {
         repository = "Enaium/fabric-mod-jimmer"
         accessToken = providers.gradleProperty("github.token")
         commitish = "master"
+    }
+}
+
+mavenPublishing {
+
+    publishToMavenCentral(automaticRelease = true)
+
+    signAllPublications()
+
+    coordinates(
+        groupId = project.group.toString(),
+        artifactId = project.name,
+        version = project.version.toString()
+    )
+
+    pom {
+        name = "Fabric H2 Database"
+        description = "Minecraft Database Library"
+        url = "https://github.com/Enaium/fabric-mod-h2database"
+        licenses {
+            license {
+                name = "Mozilla Public License Version 2.0"
+                url = "https://www.mozilla.org/en-US/MPL/2.0/"
+            }
+        }
+        developers {
+            developer {
+                name = "Enaium"
+                url = "https://github.com/Enaium"
+            }
+        }
+        scm {
+            connection.set("scm:git:git://github.com/Enaium/fabric-mod-h2database.git")
+            developerConnection.set("scm:git:ssh://github.com/Enaium/fabric-mod-h2database.git")
+            url.set("https://github.com/Enaium/fabric-mod-h2database")
+        }
     }
 }
