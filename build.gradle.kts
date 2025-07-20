@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "cn.enaium"
-version = "1.0.1+jimmer.${libs.versions.jimmer.get()}"
+version = "1.0.2+jimmer.${libs.versions.jimmer.get()}"
 
 repositories {
     mavenCentral()
@@ -99,13 +99,13 @@ mavenPublishing {
     )
 
     pom {
-        name = "Fabric H2 Database"
-        description = "Minecraft Database Library"
-        url = "https://github.com/Enaium/fabric-mod-h2database"
+        name = "Fabric ORM Jimmer"
+        description = "Minecraft ORM Library"
+        url = "https://github.com/Enaium/fabric-mod-jimmer"
         licenses {
             license {
-                name = "Mozilla Public License Version 2.0"
-                url = "https://www.mozilla.org/en-US/MPL/2.0/"
+                name = "The Apache License, Version 2.0"
+                url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
             }
         }
         developers {
@@ -115,9 +115,9 @@ mavenPublishing {
             }
         }
         scm {
-            connection.set("scm:git:git://github.com/Enaium/fabric-mod-h2database.git")
-            developerConnection.set("scm:git:ssh://github.com/Enaium/fabric-mod-h2database.git")
-            url.set("https://github.com/Enaium/fabric-mod-h2database")
+            connection.set("scm:git:git://github.com/Enaium/fabric-mod-jimmer.git")
+            developerConnection.set("scm:git:ssh://github.com/Enaium/fabric-mod-jimmer.git")
+            url.set("https://github.com/Enaium/fabric-mod-jimmer")
         }
     }
 }
