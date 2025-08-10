@@ -1,3 +1,5 @@
+import me.modmuss50.mpp.PublishModTask
+
 plugins {
     alias(libs.plugins.loom)
     alias(libs.plugins.publish)
@@ -50,6 +52,10 @@ tasks.processResources {
     filesMatching("fabric.mod.json") {
         expand("version" to version)
     }
+}
+
+tasks.withType<PublishModTask>().configureEach {
+    dependsOn(tasks.named("remapJar"))
 }
 
 publishMods {
