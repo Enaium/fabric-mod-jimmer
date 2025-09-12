@@ -1,6 +1,6 @@
 [versions]
-jimmer = "0.9.107"
-loom = "1.10-SNAPSHOT"
+jimmer = "0.9.109"
+loom = "1.11-SNAPSHOT"
 minecraft = "1.21.7"
 yarn = "1.21.7+build.2"
 loader = "0.16.14"
