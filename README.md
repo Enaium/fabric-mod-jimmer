@@ -18,25 +18,45 @@ To use Fabric ORM Jimmer as a dependency in your Fabric mod:
 
 1. Add the following to your `build.gradle` or `build.gradle.kts`:
 
-   **Groovy (build.gradle):**
-   ```groovy
-   repositories {
-       mavenCentral()
-   }
-   dependencies {
-       modImplementation 'cn.enaium:fabric-orm-jimmer:<version>'
-   }
-   ```
-   **Kotlin DSL (build.gradle.kts):**
-   ```kotlin
-   repositories {
-       mavenCentral()
-   }
-   dependencies {
-       modImplementation("cn.enaium:fabric-orm-jimmer:<version>")
-   }
-   ```
-   Replace `<version>` with the latest version from the [releases page](https://github.com/Enaium/fabric-mod-jimmer/releases).
+**(Java Project) Groovy (build.gradle):**
+
+```groovy
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation 'cn.enaium:fabric-orm-jimmer:<version>'
+    annotationProcessor "org.babyfish.jimmer:jimmer-apt:<jimmer_version>"
+}
+```
+
+**(Java Project) Kotlin DSL (build.gradle.kts):**
+
+```kotlin
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation("cn.enaium:fabric-orm-jimmer:<version>")
+    annotationProcessor("org.babyfish.jimmer:jimmer-apt:<jimmer_version>")
+}
+```
+
+**(Kotlin Project) Kotlin DSL (build.gradle.kts):**
+
+```groovy
+plugins {
+    kotlin("jvm") version "<kotlin_version>"
+    id("com.google.devtools.ksp") version "<kotlin_version>+"
+}
+
+dependencies {
+    implementation("cn.enaium:fabric-orm-jimmer:<version>")
+    ksp("org.babyfish.jimmer:jimmer-ksp:<jimmer_version>")
+}
+```
+
+Replace `<version>` with the latest version from the [releases page](https://github.com/Enaium/fabric-mod-jimmer/releases).
 
 2. Refresh your dependencies and import as usual.
 
