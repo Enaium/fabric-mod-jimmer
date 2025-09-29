@@ -69,7 +69,7 @@ publishMods {
         projectId = "1295848"
         accessToken = providers.gradleProperty("curseforge.token")
         minecraftVersionRange {
-            start = "1.0"
+            start = "1.14"
             end = "latest"
         }
         optional("fabric-language-kotlin")
