@@ -1,5 +1,5 @@
 [versions]
-jimmer = "0.9.119"
+jimmer = "0.10.6"
 loom = "1.14-SNAPSHOT"
 minecraft = "1.21.11"
 yarn = "1.21.11+build.3"
