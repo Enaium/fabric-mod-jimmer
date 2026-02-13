@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "cn.enaium"
-version = "1.0.2+jimmer.${libs.versions.jimmer.get()}"
+version = "1.0.3+jimmer.${libs.versions.jimmer.get()}"
 
 repositories {
     mavenCentral()
@@ -18,7 +18,10 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-val includeAndExpose: Configuration by configurations.creating
+val includeAndExpose: Configuration by configurations.creating {
+    exclude(module = "kotlin-stdlib")
+    exclude(module = "kotlin-reflect")
+}
 
 configurations {
     include {
@@ -37,10 +40,8 @@ dependencies {
         }
     }
     modImplementation(libs.fabric.loader)
-    includeAndExpose(libs.jimmer) {
-        exclude(module = "kotlin-stdlib")
-        exclude(module = "kotlin-reflect")
-    }
+    includeAndExpose(libs.jackson)
+    includeAndExpose(libs.jimmer)
 }
 
 tasks.processIncludeJars {

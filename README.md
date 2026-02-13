@@ -26,6 +26,7 @@ repositories {
 }
 dependencies {
     implementation 'cn.enaium:fabric-orm-jimmer:<version>'
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.+'
     annotationProcessor "org.babyfish.jimmer:jimmer-apt:<jimmer_version>"
 }
 ```
@@ -38,6 +39,7 @@ repositories {
 }
 dependencies {
     implementation("cn.enaium:fabric-orm-jimmer:<version>")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.+")
     annotationProcessor("org.babyfish.jimmer:jimmer-apt:<jimmer_version>")
 }
 ```
@@ -52,6 +54,7 @@ plugins {
 
 dependencies {
     implementation("cn.enaium:fabric-orm-jimmer:<version>")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.+")
     ksp("org.babyfish.jimmer:jimmer-ksp:<jimmer_version>")
 }
 ```

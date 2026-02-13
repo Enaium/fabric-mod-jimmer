@@ -1,17 +1,19 @@
 [versions]
 jimmer = "0.10.6"
-loom = "1.14-SNAPSHOT"
+loom = "1.15-SNAPSHOT"
 minecraft = "1.21.11"
 yarn = "1.21.11+build.3"
 loader = "0.18.4"
 publish = "0.8.4"
 maven = "0.34.0"
+jackson = "2.21.0"
 
 [libraries]
 jimmer = { module = "org.babyfish.jimmer:jimmer-sql-kotlin", version.ref = "jimmer" }
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
 fabric-yarn = { module = "net.fabricmc:yarn", version.ref = "yarn" }
 fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "loader" }
+jackson = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
 
 [plugins]
 loom = { id = "fabric-loom", version.ref = "loom" }
