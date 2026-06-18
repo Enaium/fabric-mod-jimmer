@@ -23,25 +23,31 @@ val includeAndExpose: Configuration by configurations.creating {
     exclude(module = "kotlin-reflect")
 }
 
-configurations {
-    include {
-        extendsFrom(includeAndExpose)
+//configurations {
+//    include {
+//        extendsFrom(includeAndExpose)
+//    }
+//    api {
+//        extendsFrom(includeAndExpose)
+//    }
+//}
+
+val publishing = gradle.startParameter.taskNames.any {
+    it.split(":").any { split -> split.startsWith("publishToMaven") }
+}
+
+fun include(dependency: Any) {
+    if (publishing) {
+        return
     }
-    modApi {
-        extendsFrom(includeAndExpose)
-    }
+    dependencies.add("includeAndExpose", dependency)
 }
 
 dependencies {
     minecraft(libs.minecraft)
-    mappings(libs.fabric.yarn) {
-        artifact {
-            classifier = "v2"
-        }
-    }
-    modImplementation(libs.fabric.loader)
-    includeAndExpose(libs.jackson)
-    includeAndExpose(libs.jimmer)
+    implementation(libs.fabric.loader)
+    include(libs.jackson)
+    include(libs.jimmer)
 }
 
 tasks.processIncludeJars {
@@ -56,11 +62,11 @@ tasks.processResources {
 }
 
 tasks.withType<PublishModTask>().configureEach {
-    dependsOn(tasks.named("remapJar"))
+    dependsOn(tasks.named("jar"))
 }
 
 publishMods {
-    file = tasks.remapJar.get().archiveFile.get()
+    file = tasks.jar.get().archiveFile.get()
     type = STABLE
     displayName = "Fabric ORM Jimmer ${project.version}"
     changelog = ""
