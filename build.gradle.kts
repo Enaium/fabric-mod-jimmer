@@ -78,7 +78,7 @@ publishMods {
         projectId = "ZyOeUjNc"
         accessToken = providers.gradleProperty("modrinth.token")
         minecraftVersionRange {
-            start = "1.0"
+            start = "1.14"
             end = "latest"
         }
         optional("fabric-language-kotlin")

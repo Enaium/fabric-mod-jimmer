@@ -1,10 +1,10 @@
 [versions]
-jimmer = "0.11.2"
-loom = "1.16-SNAPSHOT"
-minecraft = "26.2"
-loader = "0.19.3"
-publish = "1.1.0"
-maven = "0.34.0"
+jimmer = "0.12.2"
+loom = "1.18-SNAPSHOT"
+minecraft = "26.3"
+loader = "0.19.5"
+publish = "2.2.1"
+maven = "0.37.0"
 jackson = "2.21.0"
 
 [libraries]
@@ -14,6 +14,6 @@ fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "loader" 
 jackson = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
 
 [plugins]
-loom = { id = "fabric-loom", version.ref = "loom" }
+loom = { id = "net.fabricmc.fabric-loom", version.ref = "loom" }
 publish = { id = "me.modmuss50.mod-publish-plugin", version.ref = "publish" }
 maven = { id = "com.vanniktech.maven.publish", version.ref = "maven" }
