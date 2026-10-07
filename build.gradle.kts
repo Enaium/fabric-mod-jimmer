@@ -71,6 +71,8 @@ publishMods {
             start = "1.14"
             end = "latest"
         }
+        client = true
+        server = true
         optional("fabric-language-kotlin")
     }
 
